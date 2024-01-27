@@ -8,6 +8,7 @@ import WishList from "./components/WishList/WishList";
 import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home/Home.jsx";
 import Details from "./components/Details/Details.jsx";
+import {cartProductLoader, wishProductLoader} from "../utilities/setCart.js";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +22,12 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart></Cart>,
+        loader: cartProductLoader
       },
       {
         path: "/wishList",
         element: <WishList></WishList>,
+        loader: wishProductLoader
       },
       {
         path: "/sign-up",

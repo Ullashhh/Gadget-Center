@@ -11,6 +11,39 @@ const addToDb = (id) => {
   localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
 };
 
+
+const decreaseFromDb = (id) => {
+  let shoppingCart = getShoppingCart();
+  const quantity = shoppingCart[id];
+  if (!quantity) {
+    shoppingCart[id] = 1;
+  } else {
+    const newQuantity = quantity - 1;
+    shoppingCart[id] = newQuantity;
+  }
+  localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+}
+
+const addWishCart = (id) => {
+  let wishCart = getWishList()
+  const wishedCart = wishCart[id]
+  if(!wishedCart){
+    wishCart[id]=true;
+  }else{
+    delete wishCart[id];
+  }
+  localStorage.setItem('wish-list',JSON.stringify(wishCart))
+}
+
+const getWishList = () => {
+  let wishCart = {}
+  const wishList = localStorage.getItem('wish-list')
+  if(wishList){
+    wishCart = JSON.parse(wishList);
+  }
+  return wishCart;
+}
+
 const removeFromDb = (id) => {
   const shoppingCart = getShoppingCart();
   if (id in shoppingCart) {
@@ -32,7 +65,7 @@ const deleteShoppingCart = () => {
   localStorage.removeItem("shopping-cart");
 };
 
-export { addToDb, removeFromDb, getShoppingCart, deleteShoppingCart };
+export { addToDb, removeFromDb, getShoppingCart, deleteShoppingCart, getWishList, addWishCart, decreaseFromDb};
 
 // manage order cart from localStorage
 // useEffect(() => {

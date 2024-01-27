@@ -5,10 +5,10 @@ import { Outlet } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-        </div>
+      <div>
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+      </div>
     );
 };
 
